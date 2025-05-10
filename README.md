@@ -23,6 +23,100 @@ A distributed system for managing and load balancing SMS sending across multiple
 - Android phone with Termux installed
 - Termux:API package installed on Android phone
 
+## Android Phone Setup
+
+### 1. Install Termux and Required Packages
+
+1. Install Termux from F-Droid:
+   - Download and install [F-Droid](https://f-droid.org/)
+   - Open F-Droid and search for "Termux"
+   - Install Termux from the official repository
+
+2. Install Termux:API:
+   - Open F-Droid
+   - Search for "Termux:API"
+   - Install Termux:API
+
+3. Open Termux and update packages:
+```bash
+pkg update && pkg upgrade
+```
+
+4. Install required packages:
+```bash
+pkg install git nodejs
+```
+
+### 2. Configure Termux Permissions
+
+1. Open Android Settings
+2. Go to Apps > Termux
+3. Grant the following permissions:
+   - Storage
+   - SMS
+   - Phone
+
+### 3. Setup SMS Server on Phone
+
+1. Clone the repository:
+```bash
+cd ~
+git clone https://github.com/yourusername/regin.git
+cd regin/sms-server
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create and configure environment file:
+```bash
+echo "PORT=8080
+NODE_ENV=development
+MAIN_SERVER_URL=http://<main-server-ip>:8080
+PHONE_ID=phone-001" > .env
+```
+
+4. Test Termux:API SMS functionality:
+```bash
+termux-sms-send -n "+1234567890" "Test message"
+```
+
+### 4. Running SMS Server
+
+1. Start the server:
+```bash
+npm run dev
+```
+
+2. Verify server is running:
+```bash
+curl http://localhost:8080/health
+```
+
+### 5. Troubleshooting Phone Setup
+
+1. **Termux:API not working**
+   - Verify Termux:API is installed from F-Droid
+   - Check if permissions are granted in Android Settings
+   - Try reinstalling Termux:API
+
+2. **Node.js not found**
+   - Run `pkg install nodejs` again
+   - Verify installation with `node --version`
+
+3. **SMS permissions not working**
+   - Go to Android Settings > Apps > Termux
+   - Clear app data and cache
+   - Re-grant SMS permissions
+   - Restart Termux
+
+4. **Server not starting**
+   - Check if port 8080 is available
+   - Verify all dependencies are installed
+   - Check the .env file configuration
+
 ## Installation
 
 ### 1. Main Server Setup
