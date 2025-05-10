@@ -40,11 +40,15 @@ export class PhoneManager {
 
   private async checkPhoneHealth(phone: Phone): Promise<void> {
     try {
+
+      console.log(`Checking phone ${phone.phoneId} health on ${phone.ip}`);
       await axios.get(`http://${phone.ip}:8080/health`, { timeout: 5000 });
       this.updatePhoneStatus(phone.phoneId, 'online');
+      console.log(`Phone ${phone.phoneId} is online`);
     } catch (error) {
       if (Date.now() - phone.lastSeen > this.OFFLINE_THRESHOLD) {
         this.updatePhoneStatus(phone.phoneId, 'offline');
+        console.log(`Phone ${phone.phoneId} is offline`);
       }
     }
   }
