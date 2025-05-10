@@ -1,4 +1,4 @@
-# SMS Load Balancing System
+# DIY self hosted SMS API
 
 A distributed system for managing and load balancing SMS sending across multiple Android phones using Termux. The system consists of three main components:
 
@@ -6,14 +6,24 @@ A distributed system for managing and load balancing SMS sending across multiple
 2. SMS Server - Runs on each Android phone to send SMS messages
 3. Dashboard - Web interface to monitor phone status and SMS statistics
 
-## System Architecture
+## Architecture
 
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Dashboard │     │ Main Server │     │ SMS Server  │
-│   (Web UI)  │◄────┤ (Load      │◄────┤ (Android    │
-└─────────────┘     │  Balancer)  │     │  Phone)     │
-                    └─────────────┘     └─────────────┘
+        +------------------+
+        |  UI Dashboard    |
+        +------------------+
+                 |
+                 v
+          +---------------+
+          |  Main Server  |
+          +---------------+
+           ^     ^     ^
+           |     |     |
+   +-----------+-----------+-----------+
+   |  Phone 1  |  Phone 2  |  Phone N  |
+   +-----------+-----------+-----------+
+
+
 ```
 
 ## Prerequisites
