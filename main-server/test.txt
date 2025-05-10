@@ -1,0 +1,19 @@
+import { exec } from "child_process";
+
+const phoneNumber = "0038640142089";
+const message = "Test message from ADB bot";
+
+const command = `adb shell am start -a android.intent.action.SENDTO -d sms:${phoneNumber} --es sms_body "${message}" --ez exit_on_sent true`;
+
+console.log("Running command:", command);
+
+exec(command, (error, stdout, stderr) => {
+  if (error) {
+    console.error("Exec error:", error.message);
+    return;y
+  }
+  if (stderr) {
+    console.error("Stderr:", stderr);
+  }
+  console.log("Stdout:", stdout);
+});

@@ -1,0 +1,9 @@
+
+sms-server/node_modules/*
+sms-server/dist/*
+
+main-server/node_modules/*
+main-server/dist/*
+
+sms-server/package-lock.json
+main-server/package-lock.json
