@@ -40,6 +40,7 @@ router.post('/send', async (req: Request, res: Response, next: NextFunction) => 
 
   if (!to || !msg) {
    res.status(400).json({ error: 'to and msg are required' });
+   return;
   }
 
   const selectedPhone = phoneManager.selectPhone(strategy);
@@ -55,9 +56,11 @@ router.post('/send', async (req: Request, res: Response, next: NextFunction) => 
       msg
     });
 
-
-
-    phoneManager.recordSuccess(selectedPhone.phoneId);
+    if (response.data.status === 'sent') {
+      phoneManager.recordSuccess(selectedPhone.phoneId);
+    } else {
+      phoneManager.recordFailure(selectedPhone.phoneId);
+    }
     res.json(response.data);
   } catch (error) {
     phoneManager.recordFailure(selectedPhone.phoneId);
