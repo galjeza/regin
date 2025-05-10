@@ -2,7 +2,7 @@ export interface Phone {
   phoneId: string;
   ip: string;
   lastSeen: number;
-  status: 'online' | 'offline' | 'idle';
+  status: 'online' | 'offline';
   successCount: number;
   failureCount: number;
 }
