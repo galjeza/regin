@@ -7,3 +7,8 @@ main-server/dist/*
 
 sms-server/package-lock.json
 main-server/package-lock.json
+
+dashboard/node_modules/*
+dashboard/dist/*
+
+dashboard/package-lock.json

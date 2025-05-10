@@ -133,3 +133,30 @@ For Termux, use something like:
     pm2 (process manager for Node.js)
 
     termux-wake-lock + termux-boot to auto-start on boot
+
+
+
+    Da lahko telefon iu kjerkoli dela : 🛠️ Workarounds:
+🔁 Reverse SSH Tunnel or VPN:
+
+You can create a reverse tunnel to a publicly accessible server (like a VPS).
+
+    On your phone (Termux):
+
+    ssh -R 80:localhost:8080 user@your-vps.com
+
+    Now http://your-vps.com would proxy to your phone server.
+
+    This requires you to have access to a VPS or cloud server.
+
+🌐 Use a tunneling service (easiest):
+
+These expose local servers to the internet via a public URL:
+
+    Ngrok: ngrok http 8080
+
+    LocalTunnel
+
+    Cloudflare Tunnel (free)
+
+    Tailscale Funnel (with Tailscale VPN)
