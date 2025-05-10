@@ -4,7 +4,7 @@ const phoneIp = "100.76.185.78";
 const url = `http://${phoneIp}:8080/sms`;
 
 axios.post(url, {
-  to: "+38640123456",
+  to: "+38631295335",
   msg: "Test message from Axios"
 })
   .then((res) => {
