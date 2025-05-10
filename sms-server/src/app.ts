@@ -8,7 +8,7 @@ import healthRoutes from './routes/healthRoutes';
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/sms', smsRoutes);
+app.use('/sms', smsRoutes);
 app.use('/health', healthRoutes);
 
 export default app;
