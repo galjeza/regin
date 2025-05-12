@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import SmsForm from './SmsForm.svelte';
 
   interface Phone {
     phoneId: string;
@@ -16,7 +17,7 @@
 
   async function fetchPhones() {
     try {
-      const response = await fetch('http://192.168.174.96:8080/phones');
+      const response = await fetch('http://192.168.1.12:8080/phones');
       if (!response.ok) throw new Error('Failed to fetch phones');
       phones = await response.json();
     } catch (e) {
@@ -36,6 +37,8 @@
 
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-3xl font-bold mb-6">Phone Dashboard</h1>
+  
+  <SmsForm />
   
   {#if loading}
     <div class="flex justify-center">
