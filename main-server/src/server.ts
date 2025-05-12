@@ -12,6 +12,15 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+// Request logging middleware
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${req.method} ${req.url}`);
+  console.log('Request Body:', req.body);
+  console.log('Request Headers:', req.headers);
+  next();
+});
+
 const phoneManager = new PhoneManager();
 
 router.post('/register', (req: Request, res: Response) => {

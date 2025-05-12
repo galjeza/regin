@@ -4,7 +4,7 @@ import os, { networkInterfaces } from 'os';
 import axios from 'axios';
 import { logger } from './logger';
 
-const mainServerUrl = process.env.MAIN_SERVER_URL || 'http://192.168.174.96:8080';
+const mainServerUrl = process.env.MAIN_SERVER_URL || 'http://192.168.1.12:8080';
 const phoneId = process.env.PHONE_ID || 'phone-' + Math.random().toString(36).substring(7);
 
 function getLocalIp(): string {
